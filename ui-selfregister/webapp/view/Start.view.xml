@@ -1,0 +1,58 @@
+<mvc:View controllerName="yamaha.oof.uiselfregister.controller.Start"
+    xmlns:mvc="sap.ui.core.mvc"
+		xmlns="sap.m"
+		xmlns:f="sap.f"
+		xmlns:l="sap.ui.layout"
+        xmlns:form="sap.ui.layout.form"
+        xmlns:core="sap.ui.core"
+		height="100%">
+        
+		<f:DynamicPage id="dynamicPageId" >
+			<!-- DynamicPage Title -->
+			<f:title>
+				<f:DynamicPageTitle>
+					<f:heading>
+						<ImageContent src="./utils/image3.svg" description="Logo">
+	                    </ImageContent>
+					</f:heading>
+					<!-- <f:expandedContent>
+						<Label text="Yamaha Dealer Self Registeration"/>
+					</f:expandedContent>
+					<f:snappedContent>
+						<Label text="Self Registeration"/>
+					</f:snappedContent>
+					<f:snappedTitleOnMobile>
+						<Title text="Dealer Registeration"/>
+					</f:snappedTitleOnMobile> -->
+					<!-- <f:content>
+						<OverflowToolbar>
+							<GenericTag text="SR"
+								status="Error"
+								press="onPressOpenPopover"
+								design="StatusIconHidden">
+								<ObjectNumber number="2"
+									unit="M"
+									emphasized="false"
+									state="Error"/>
+							</GenericTag>
+						</OverflowToolbar>
+					</f:content> -->
+					<f:actions>	
+						<Button
+								text="Sign in"
+                                press="onPressSignIn"/>
+                        <Button
+								text="Create an account"
+								type="Emphasized"
+                                press="onPressRegister"
+								/>
+					</f:actions>
+				</f:DynamicPageTitle>
+			</f:title>
+			
+			<f:content>
+				<Image src="./utils/yamaha1.jpg" height="95%" width="100%"/>
+			</f:content>
+			
+		</f:DynamicPage>
+</mvc:View>

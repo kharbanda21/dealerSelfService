@@ -1,0 +1,22 @@
+{
+    "name": "mta-project",
+    "version": "0.0.1",
+    "description": "Build and deployment scripts",
+    "scripts": {
+        "clean": "rimraf resources mta_archives mta-op*",
+        "build": "rimraf resources mta_archives && mbt build --mtar archive",
+        "deploy": "cf deploy mta_archives/archive.mtar --retries 1",
+        "undeploy": "cf undeploy dealerselfregister --delete-services --delete-service-keys --delete-service-brokers"
+    },
+    "devDependencies": {
+        "mbt": "^1.2.18",
+        "rimraf": "^3.0.2"
+    },
+    "dependencies": {
+        "@sap/approuter": "^11.3.2",
+        "@sap/audit-logging": "^5.5.4",
+        "@sap/e2e-trace": "^3.1.0",
+        "@sap/logging": "^6.1.3",
+        "@sap/xsenv": "^3.3.2"
+    }
+}

@@ -1,0 +1,86 @@
+_schema-version: "3.2"
+ID: dealerselfregister
+version: 0.0.1
+modules:
+- name: dealerselfregister-approuter
+  type: approuter.nodejs
+  path: dealerselfregister-approuter
+  requires:
+  - name: dealerselfregister_html_repo_runtime
+  - name: workflow
+  - name: uaa_dealerselfregister
+  - name: dealerselfregister-destination-service
+    group: destinations
+    properties:
+      forwardAuthToken: false
+      name: ui5
+      url: https://ui5.sap.com
+  parameters:
+    disk-quota: 256M
+    memory: 256M
+- name: dealerselfregister_ui_deployer
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: dealerselfregister_html_repo_host
+    parameters:
+      content-target: true
+  build-parameters:
+    build-result: resources
+    requires:
+    - artifacts:
+      - yamahaoofuiselfregister.zip
+      name: yamahaoofuiselfregister
+      target-path: resources/
+- name: yamahaoofuiselfregister
+  type: html5
+  path: ui-selfregister
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+resources:
+- name: workflow
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: workflow
+    service-plan: standard
+- name: dealerselfregister_html_repo_runtime
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-plan: app-runtime
+- name: dealerselfregister_html_repo_host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-plan: app-host
+- name: dealerselfregister-destination-service
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      HTML5Runtime_enabled: false
+      init_data:
+        instance:
+          destinations:
+          - Authentication: NoAuthentication
+            Name: ui5
+            ProxyType: Internet
+            Type: HTTP
+            URL: https://ui5.sap.com
+          existing_destinations_policy: update
+      version: 1.0.0
+    service: destination
+    service-name: dealerselfregister-destination-service
+    service-plan: lite
+- name: uaa_dealerselfregister
+  type: org.cloudfoundry.managed-service
+  parameters:
+    path: ./xs-security.json
+    service: xsuaa
+    service-plan: application    
+parameters:
+  deploy_mode: html5-repo

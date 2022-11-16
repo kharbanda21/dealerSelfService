@@ -1,0 +1,145 @@
+<mvc:View controllerName="yamaha.oof.uiselfregister.controller.home"
+    xmlns:mvc="sap.ui.core.mvc"
+		xmlns="sap.m"
+		xmlns:f="sap.f"
+		xmlns:l="sap.ui.layout"
+        xmlns:form="sap.ui.layout.form"
+        xmlns:core="sap.ui.core"
+		height="100%">
+        
+		<f:DynamicPage id="dynamicPageId" >
+			<!-- DynamicPage Title -->
+			<f:title>
+				<f:DynamicPageTitle>
+					<f:heading>
+						<Title text="Register User"/>
+					</f:heading>
+					<!-- <f:breadcrumbs>
+						<Breadcrumbs>
+							<Link text="Home" />
+							<Link text="Page 1" />
+							<Link text="Page 2" />
+							<Link text="Page 3" />
+							<Link text="Page 4" />
+							<Link text="Page 5" />
+						</Breadcrumbs>
+					</f:breadcrumbs> -->
+					<f:expandedContent>
+						<Label text="Yamaha Dealer Self Registeration"/>
+					</f:expandedContent>
+					<f:snappedContent>
+						<Label text="Self Registeration"/>
+					</f:snappedContent>
+					<f:snappedTitleOnMobile>
+						<Title text="Dealer Registeration"/>
+					</f:snappedTitleOnMobile>
+					<!-- <f:content>
+						<OverflowToolbar>
+							<GenericTag text="SR"
+								status="Error"
+								press="onPressOpenPopover"
+								design="StatusIconHidden">
+								<ObjectNumber number="2"
+									unit="M"
+									emphasized="false"
+									state="Error"/>
+							</GenericTag>
+						</OverflowToolbar>
+					</f:content> -->
+					<f:actions>
+						
+						<Button
+								text="Sign in"
+                                press="onPressSignIn"/>
+                        <!-- <Button
+								text="Create an account"
+								type="Emphasized"
+								/> -->
+						
+					</f:actions>
+					<!-- <f:navigationActions>
+						<Button
+								icon="sap-icon://full-screen"
+								type="Transparent" />
+						<Button
+								icon="sap-icon://exit-full-screen"
+								type="Transparent" />
+						<Button
+								icon="sap-icon://decline"
+								type="Transparent" />
+					</f:navigationActions> -->
+				</f:DynamicPageTitle>
+			</f:title>
+			<!-- DynamicPage Header -->
+			<f:header>
+				<!-- <f:DynamicPageHeader pinnable="true">
+					<layout:HorizontalLayout allowWrapping="true">
+						<layout:VerticalLayout class="sapUiMediumMarginEnd">
+							<ObjectAttribute title="Location" text="Warehouse A"/>
+							<ObjectAttribute title="Halway" text="23L"/>
+							<ObjectAttribute title="Rack" text="34"/>
+						</layout:VerticalLayout>
+
+						<layout:VerticalLayout>
+							<ObjectAttribute title="Availability"/>
+							<ObjectStatus text="In Stock" state="Success" />
+						</layout:VerticalLayout>
+					</layout:HorizontalLayout>
+				</f:DynamicPageHeader> -->
+			</f:header>
+			<f:content>
+				<VBox class="sapUiSmallMargin">
+		<form:SimpleForm id="idSimpleFormRegister"
+			editable="true"
+			layout="ResponsiveGridLayout"
+			title="User Details"
+			labelSpanXL="4"
+			labelSpanL="3"
+			labelSpanM="4"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="0"
+			emptySpanL="4"
+			emptySpanM="0"
+			emptySpanS="0"
+			columnsXL="2"
+			columnsL="1"
+			columnsM="1"
+			singleContainerFullSize="false" 
+            >
+			<form:content>
+				<core:Title text="Personal" />
+				<Label text="First name" />
+				<Input id="idFirstName" />
+                <Label text="Last name" />
+				<Input id="idLastName" />
+                <Label text="E-Mail" />
+				<Input id="idEmail" />
+                <!-- <core:Title text="Company" />
+                <Label text="Buyer Party" />
+				<Input />
+				<Label text="Department" />
+				<Input /> -->
+                
+			</form:content>
+		</form:SimpleForm>
+        <Toolbar>
+            <ToolbarSpacer/>
+            <Button type="Emphasized" text="Register" press="startWorkflowInstance"/>
+        </Toolbar>
+	</VBox>
+			</f:content>
+			<!-- DynamicPage Footer -->
+			<!-- <f:footer>
+				<OverflowToolbar> -->
+					<!-- <Button icon="sap-icon://message-popup"
+							text="{/messagesLength}"
+							type="Emphasized"
+							press="onMessageButtonPress"
+							visible="{= !!${/messagesLength}}"/> -->
+					<!-- <ToolbarSpacer/>
+					<Button type="Emphasized" text="Save"/>
+				</OverflowToolbar>
+			</f:footer> -->
+		</f:DynamicPage>
+</mvc:View>
